@@ -1,11 +1,11 @@
 #!/bin/bash
 
-OMARCHY_VERSION=$(git -C ~/.local/share/omarchy describe --tags --abbrev=0 2>/dev/null)
+OMARCHY_VERSION=$(git -C ~/.local/share/barchy describe --tags --abbrev=0 2>/dev/null)
 PATH="$PATH:$HOME/.local/share/omarchy/bin"
 
 show_ascii_art() {
   clear
-  tte -i ~/.local/share/omarchy/logo.txt --frame-rate 640 --no-color expand
+  tte -i ~/.local/share/barchy/logo.txt --frame-rate 640 --no-color expand
   echo "                                                                          $OMARCHY_VERSION"
 }
 
