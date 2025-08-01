@@ -1,23 +1,17 @@
 #!/bin/bash
 
-# Copy over Omarchy configs
-cp -R ~/.local/share/omarchy/config/* ~/.config/
-
-# Use default bashrc from Omarchy
-cp ~/.local/share/omarchy/default/bashrc ~/.bashrc
-
 # Ensure application directory exists for update-desktop-database
 mkdir -p ~/.local/share/applications
 
 # If bare install, allow a way for its exclusions to not get added in updates
 if [ -n "$OMARCHY_BARE" ]; then
-  mkdir -p ~/.local/state/omarchy
-  touch ~/.local/state/omarchy/bare.mode
+  mkdir -p ~/.local/state/barchy
+  touch ~/.local/state/barchy/bare.mode
 fi
 
 # Setup GPG configuration with multiple keyservers for better reliability
 sudo mkdir -p /etc/gnupg
-sudo cp ~/.local/share/omarchy/default/gpg/dirmngr.conf /etc/gnupg/
+sudo cp ~/.local/share/barchy/default/gpg/dirmngr.conf /etc/gnupg/
 sudo chmod 644 /etc/gnupg/dirmngr.conf
 sudo gpgconf --kill dirmngr || true
 sudo gpgconf --launch dirmngr || true
@@ -45,7 +39,7 @@ fi
 
 # Set default XCompose that is triggered with CapsLock
 tee ~/.XCompose >/dev/null <<EOF
-include "%H/.local/share/omarchy/default/xcompose"
+include "%H/.local/share/barchy/default/xcompose"
 
 # Identification
 <Multi_key> <space> <n> : "$OMARCHY_USER_NAME"

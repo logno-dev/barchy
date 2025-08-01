@@ -3,20 +3,19 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-OMARCHY_INSTALL=~/.local/share/omarchy/install
+OMARCHY_INSTALL=~/.local/share/barchy/install
 
 # Give people a chance to retry running the installation
 catch_errors() {
-  echo -e "\n\e[31mOmarchy installation failed!\e[0m"
-  echo "You can retry by running: bash ~/.local/share/omarchy/install.sh"
-  echo "Get help from the community: https://discord.gg/tXFUdasqhY"
+  echo -e "\n\e[31mBarchy installation failed!\e[0m"
+  echo "You can retry by running: bash ~/.local/share/barchy/install.sh"
 }
 
 trap catch_errors ERR
 
 show_logo() {
   clear
-  tte -i ~/.local/share/omarchy/logo.txt --frame-rate ${2:-120} ${1:-expand}
+  tte -i ~/.local/share/barchy/logo.txt --frame-rate ${2:-120} ${1:-expand}
   echo
 }
 
@@ -66,7 +65,6 @@ source $OMARCHY_INSTALL/desktop/printer.sh
 # Apps
 show_logo expand
 show_subtext "Installing default applications [4/5]"
-source $OMARCHY_INSTALL/apps/webapps.sh
 source $OMARCHY_INSTALL/apps/xtras.sh
 source $OMARCHY_INSTALL/apps/mimetypes.sh
 

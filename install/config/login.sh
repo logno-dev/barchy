@@ -84,11 +84,11 @@ elif [ -d "/etc/cmdline.d" ]; then # UKI
   # https://wiki.archlinux.org/title/Unified_kernel_image
   if ! grep -q splash /etc/cmdline.d/*.conf; then
     # Need splash, create the omarchy file
-    echo "splash" | sudo tee -a /etc/cmdline.d/omarchy.conf
+    echo "splash" | sudo tee -a /etc/cmdline.d/barchy.conf
   fi
   if ! grep -q quiet /etc/cmdline.d/*.conf; then
     # Need quiet, create or append the omarchy file
-    echo "quiet" | sudo tee -a /etc/cmdline.d/omarchy.conf
+    echo "quiet" | sudo tee -a /etc/cmdline.d/barchy.conf
   fi
 elif [ -f "/etc/kernel/cmdline" ]; then # UKI Alternate
   # Alternate UKI kernel cmdline location
@@ -123,7 +123,7 @@ else
 fi
 
 if [ "$(plymouth-set-default-theme)" != "omarchy" ]; then
-  sudo cp -r "$HOME/.local/share/omarchy/default/plymouth" /usr/share/plymouth/themes/omarchy/
+  sudo cp -r "$HOME/.local/share/omarchy/default/plymouth" /usr/share/plymouth/themes/barchy/
   sudo plymouth-set-default-theme -R omarchy
 fi
 
@@ -212,8 +212,8 @@ CCODE
   rm /tmp/seamless-login.c
 fi
 
-if [ ! -f /etc/systemd/system/omarchy-seamless-login.service ]; then
-  cat <<EOF | sudo tee /etc/systemd/system/omarchy-seamless-login.service
+if [ ! -f /etc/systemd/system/barchy-seamless-login.service ]; then
+  cat <<EOF | sudo tee /etc/systemd/system/barchy-seamless-login.service
 [Unit]
 Description=Omarchy Seamless Auto-Login
 Documentation=https://github.com/basecamp/omarchy

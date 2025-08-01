@@ -1,32 +1,31 @@
 #!/bin/bash
 
-ansi_art='                 ▄▄▄                                                   
- ▄█████▄    ▄███████████▄    ▄███████   ▄███████   ▄███████   ▄█   █▄    ▄█   █▄ 
-███   ███  ███   ███   ███  ███   ███  ███   ███  ███   ███  ███   ███  ███   ███
-███   ███  ███   ███   ███  ███   ███  ███   ███  ███   █▀   ███   ███  ███   ███
-███   ███  ███   ███   ███ ▄███▄▄▄███ ▄███▄▄▄██▀  ███       ▄███▄▄▄███▄ ███▄▄▄███
-███   ███  ███   ███   ███ ▀███▀▀▀███ ▀███▀▀▀▀    ███      ▀▀███▀▀▀███  ▀▀▀▀▀▀███
-███   ███  ███   ███   ███  ███   ███ ██████████  ███   █▄   ███   ███  ▄██   ███
-███   ███  ███   ███   ███  ███   ███  ███   ███  ███   ███  ███   ███  ███   ███
- ▀█████▀    ▀█   ███   █▀   ███   █▀   ███   ███  ███████▀   ███   █▀    ▀█████▀ 
-                                       ███   █▀                                  '
+ansi_art='██████   █████  ██████   ██████ ██   ██ ██    ██ 
+██   ██ ██   ██ ██   ██ ██      ██   ██  ██  ██  
+██████  ███████ ██████  ██      ███████   ████   
+██   ██ ██   ██ ██   ██ ██      ██   ██    ██    
+██████  ██   ██ ██   ██  ██████ ██   ██    ██    
+                                                 
+                                                 
+
+'
 
 clear
 echo -e "\n$ansi_art\n"
 
 sudo pacman -Sy --noconfirm --needed git
 
-echo -e "\nCloning Omarchy..."
+echo -e "\nCloning Barchy..."
 rm -rf ~/.local/share/omarchy/
-git clone https://github.com/basecamp/omarchy.git ~/.local/share/omarchy >/dev/null
+git clone https://github.com/logno-dev/barchy.git ~/.local/share/barchy >/dev/null
 
 # Use custom branch if instructed
 if [[ -n "$OMARCHY_REF" ]]; then
   echo -e "\eUsing branch: $OMARCHY_REF"
-  cd ~/.local/share/omarchy
+  cd ~/.local/share/barchy
   git fetch origin "${OMARCHY_REF}" && git checkout "${OMARCHY_REF}"
   cd -
 fi
 
 echo -e "\nInstallation starting..."
-source ~/.local/share/omarchy/install.sh
+source ~/.local/share/barchy/install.sh
